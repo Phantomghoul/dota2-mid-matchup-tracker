@@ -6,14 +6,12 @@ def main():
         "Puck",
         "Huskar",
         "Hard",
-        "Avoid long trades early. Prioritize levels and rotate after Dream Coil."
     )
 
     qop_vs_invoker = Matchup(
         "Queen of Pain",
         "Invoker",
         "Even",
-        "Pressure early when possible. Watch for Cold Snap and Tornado setups."
     )
 
     puck_vs_huskar.add_loss()

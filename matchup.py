@@ -1,9 +1,8 @@
 class Matchup:
-    def __init__(self, my_hero, enemy_hero, difficulty, notes):
+    def __init__(self, my_hero, enemy_hero, difficulty):
         self.my_hero = my_hero
         self.enemy_hero = enemy_hero
         self.difficulty = difficulty
-        self.notes = notes
         self.wins = 0
         self.losses = 0
 
@@ -32,5 +31,4 @@ class Matchup:
             f"Losses: {self.losses}\n"
             f"Win Rate: {self.get_win_rate():.1f}%\n"
             f"Difficulty: {self.difficulty}\n"
-            f"Notes: {self.notes}"
         )
