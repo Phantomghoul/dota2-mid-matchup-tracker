@@ -1,32 +1,41 @@
 from matchup import Matchup
+from tracker import MatchupTracker
 
 
 def main():
-    puck_vs_huskar = Matchup(
-        "Puck",
-        "Huskar",
-        "Hard",
-    )
+    tracker = MatchupTracker("data/matchups.csv")
 
-    qop_vs_invoker = Matchup(
-        "Queen of Pain",
-        "Invoker",
-        "Even",
-    )
+    tracker.load_matchups()
 
-    puck_vs_huskar.add_loss()
-    puck_vs_huskar.add_loss()
-    puck_vs_huskar.add_win()
-    puck_vs_huskar.add_win()
-    puck_vs_huskar.add_loss()
+    if len(tracker.matchups) == 0:
+        puck_vs_huskar = Matchup(
+            "Puck",
+            "Huskar",
+            "Hard",
+            "Avoid long trades early. Prioritize levels and rotate after Dream Coil.",
+            2,
+            3
+        )
 
-    qop_vs_invoker.add_win()
-    qop_vs_invoker.add_loss()
-    qop_vs_invoker.add_win()
+        qop_vs_invoker = Matchup(
+            "Queen of Pain",
+            "Invoker",
+            "Even",
+            "Pressure early. Watch for Cold Snap and Tornado setups.",
+            2,
+            1
+        )
 
-    print(puck_vs_huskar.get_summary())
+        tracker.add_matchup(puck_vs_huskar)
+        tracker.add_matchup(qop_vs_invoker)
+
+        tracker.save_matchups()
+
+    print("Dota 2 Mid-Lane Matchup Tracker")
+    print("--------------------------------")
     print()
-    print(qop_vs_invoker.get_summary())
+
+    tracker.print_all_matchups()
 
 
 if __name__ == "__main__":

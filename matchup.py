@@ -1,10 +1,11 @@
 class Matchup:
-    def __init__(self, my_hero, enemy_hero, difficulty):
+    def __init__(self, my_hero, enemy_hero, difficulty, notes, wins=0, losses=0):
         self.my_hero = my_hero
         self.enemy_hero = enemy_hero
         self.difficulty = difficulty
-        self.wins = 0
-        self.losses = 0
+        self.notes = notes
+        self.wins = int(wins)
+        self.losses = int(losses)
 
     def add_win(self):
         self.wins += 1
@@ -31,4 +32,15 @@ class Matchup:
             f"Losses: {self.losses}\n"
             f"Win Rate: {self.get_win_rate():.1f}%\n"
             f"Difficulty: {self.difficulty}\n"
+            f"Notes: {self.notes}"
         )
+
+    def to_dict(self):
+        return {
+            "my_hero": self.my_hero,
+            "enemy_hero": self.enemy_hero,
+            "wins": self.wins,
+            "losses": self.losses,
+            "difficulty": self.difficulty,
+            "notes": self.notes
+        }
